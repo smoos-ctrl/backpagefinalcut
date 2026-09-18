@@ -1,0 +1,63 @@
+name: Deploy static website
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Statische Website vorbereiten
+        run: |
+          rm -rf _site
+          mkdir -p _site
+
+          cp index.html _site/
+          cp style.css _site/
+          cp -r backgammon _site/ 2>/dev/null || true
+          cp -r backgpage _site/ 2>/dev/null || true
+          cp -r lang _site/ 2>/dev/null || true
+          cp *.js _site/ 2>/dev/null || true
+          cp *.webp _site/ 2>/dev/null || true
+          cp *.png _site/ 2>/dev/null || true
+          cp *.jpg _site/ 2>/dev/null || true
+
+          touch _site/.nojekyll
+
+      - name: GitHub Pages konfigurieren
+        uses: actions/configure-pages@v5
+
+      - name: Dateien hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - name: Website veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4
