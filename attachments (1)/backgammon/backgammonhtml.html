@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+  <body>
+    <!-- SEITE 6: SPIELSTART -->
+    <main>
+      <div id="spielstart" class="seite">
+        <h2 data-i18n="elements.header2gamestart">Spieleranmeldung</h2>
+        <div class="input-group">
+          <input type="text" id="spieler1" required />
+          <label data-i18n="elements.namePlayer1"> Name (Spieler 1) </label>
+        </div>
+        <div class="input-group">
+          <input type="text" id="spieler2" required />
+          <label data-i18n="elements.namePlayer2"> Name (Spieler 2) </label>
+        </div>
+        <button id="spielstarten" data-i18n="elements.Start_Playing">
+          Spiel starten
+        </button>
+        <!-- Spieleranmeldungsbildschirm -->
+        <!-- 2 Spieler und startbutton -->
+      </div>
+      <!-- SEITE 7: BACKGAMMON -->
+      <div id="spielbrett" class="spiel-phase">
+        <!--Das native Pop-up-Fenster-->
+        <dialog id="rules-modal">
+          <h2 data-i18n="elements.header2rules">Backgammon Regeln</h2>
+          <p data-i18n="elements.rulesbackgammon">
+            Hier kommen die Spielregeln hin... <br />
+            Welcome to Backgammon remastered with gemini <br /><br />
+            Zur Info Schwarz spielt von 24 nach 1 (gegen den Uhrzeigersinn)
+            <br />
+            Weiß von 1 nach 24 (mit dem Uhrzeigersinn) <br />
+            Steine die einzeln auf einer Zacke liegen , <br />
+            Können geschlagen werden und landen dann auf der Bar. <br />
+            Die Steine von der Bar müssen zuerst wieder aufs Feld. <br />
+            Dazu einfach auf ein, nach den Augenzahlen der Würfel, <br />
+            mögliches Feld (im gegnerischen Heimfeld) klicken <br />
+            Wenn alle Steine einer Farbe im Heimfeld sind (letztes Viertel),
+            <br />
+            kann der Stein per Doppelklick vom Feld befördert werden (ins Ziel)
+            <br />
+            Fals kein Zug möglich sein sollte, bitte den "Zug passen"-button
+            drücken <br />
+            Have Fun und Viel Spaß beim spielen!
+          </p>
+          <button id="close-rules" data-i18n="elements.closerules">
+            Schließen
+          </button>
+        </dialog>
+
+        <!--Spielfeld und SpielSpaß-->
+        <div class="game-container">
+          <div class="backgammon-board" id="backgammon-board">
+            <!--Obere Reihe (Zacken 13 bis 24) wo sind die kommentare hin !? das heir sollte ersetzt werden durch java script erzeugung-->
+            <div class="top-row"></div>
+            <!--Die Bar in der Mitte für die geschlagene Steine-->
+            <div class="bar" id="spiel-bar">
+              <!-- Hier landen geschlagene schwarze Steine -->
+              <div
+                id="Bar-Schwarz-Zone"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 3px;
+                  min-height: 50px;
+                "
+              ></div>
+              <!-- Hier landen geschlagene weiße Steine -->
+              <div
+                id="Bar-Weiß-Zone"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 3px;
+                  min-height: 50px;
+                "
+              ></div>
+            </div>
+            <!--Die untere Reihe Zacken 1 -12-->
+            <div class="bottom-row"></div>
+          </div>
+          <!--Würfelgrafik (und Logik,js)-->
+          <div class="dice-area">
+            <div class="game-controls">
+              <button id="open-rules" data-i18n="elements.Open_Rules">
+                Anleitung anzeigen
+              </button>
+              <div id="spieler-anzeige" data-i18n="elements.Players_turn">
+                Am Zug: <span id="aktueller-spieler">-</span>
+              </div>
+            </div>
+
+            <button id="btn-roll" data-i18n="elements.roll">Würfeln</button>
+            <div id="dice-result"></div>
+            <button id="btn-pass" data-i18n="elements.passif_blocked">
+              Zug passen (wenn blockiert)
+            </button>
+          </div>
+          <!--anzeige/ermittlung welcher spieler dran ist und ziehen darf , fals es nachdem würfel und jenachdem wie die steine liegen überhaupt ziehen kann-->
+        </div>
+      </div>
+      <!-- SEITE 8: SPIELENDE -->
+      <div id="spielende" class="seite">
+        <!--Endergebnis holen , Gewinner anzeigen -->
+        <!-- Spielergebniss und neustart , zurück zu backgammon  bei gleichen namen , bei neuen spielern zurück zu spielstart-->
+        <h2 data-i18n="elements.game over">Spiel vorbei!</h2>
+        <div id="gewinner-nachricht"></div>
+        <button id="btn-restart-same" data-i18n="elements.restartsame">
+          Nochmal mit gleichen Spielern
+        </button>
+        <button id="btn-restart-new" data-i18n="elements.restartnew">
+          Neue Spieler anmelden
+        </button>
+        <button
+          id="btn-toggle-highscore"
+          data-i18n="elements.showhideHighscore"
+        >
+          🏆 Highscore ein-/ausblenden
+        </button>
+
+        <div class="highscore-container" style="display: none">
+          <h2 data-i18n="elements.Halloffame">🏆 Hall of Fame</h2>
+          <ol id="highscore-liste">
+            <!-- Hier fügt JavaScript die Gewinner ein -->
+          </ol>
+        </div>
+      </div>
+    </main>
+    <!--footer class="main-footer"></footer-->
+  </body>
+</html>

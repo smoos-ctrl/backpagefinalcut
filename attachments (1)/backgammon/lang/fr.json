@@ -1,0 +1,48 @@
+{
+  "current_lang": "fr",
+
+  "alerts": {
+    "inputname_message": "Veuillez saisir les noms des deux joueurs !",
+    "allstonesinside1_message": "Tu dois d'abord amener TOUS tes pions dans ta zone d'arrivée !",
+    "stoneout_message": "Une pierre {{farbe}} a été jouée !",
+    "winnergame_message": "🏆 Félicitations !  {{sieger}}  (Blancs) a remporté la partie !",
+    "winnergame2_message": "🏆 Félicitations !  {{sieger}}  (Noirs) a remporté la partie !",
+    "wrongvalueout_message": "Vous n'avez pas de dé approprié pour sortir un pion de la case {{vonId}} (benötigt: {{benoetigteAugen}}).",
+    "changeplayer_message": "Changement de joueur ! {{playerName}} est en jeu.",
+
+    "startwinname_message": "{{playerName}} remporte le tirage au sort initial et commence (Couleur : Blanc) !",
+    "samedice_message": "Égalité ! Veuillez relancer.",
+    "makemove_message": "Vous devez jouer vos coups en premier !",
+    "blockedpoint_message": "Ce point est bloqué par l'adversaire !",
+    "wrongvalueingame_message": "Coup invalide ! Aucun lancer de dé ne correspond à ces cases.",
+    "kickedatbar_message": "💥 Frappée ! La pierre {{farbe}} a été propulsée contre la barre !",
+
+    "roll_dice_btn": "Tenter sa chance",
+    "rolldice1_message": "Veuillez d'abord lancer les dés !",
+    "notyourstone_message": "Ce n'est pas ta pierre !",
+    "wrongdirection_message": "Mauvaise direction ! Vous devez avancer.",
+    "blocked_message": "Cette case d'entrée est bloquée par l'adversaire !",
+    "kickedoutagain_message": "💥 Éjectée dès le début ! La pierre {{farbe}} doit aller sur la barre !",
+    "backingame_message": "Stone a réussi sa transition du barreau au conseil d'administration  {{feld}} !",
+    "noentry_message": "Coup invalide ! Vous ne pouvez pas accéder à la case {{feld}} avec vos dés [{{zuege}}] (résultat requis : {{distanz}})."
+  },
+  "elements": {
+    "header2gamestart": "Inscription des joueurs",
+    "namePlayer1": " Nom (Joueur 1)",
+    "namePlayer2": " Nom (Joueur 2)",
+    "Start_Playing": "Commencer le jeu",
+    "header2rules": "Règles du backgammon",
+    "rulesbackgammon": "Voici les règles… \nBienvenue dans Backgammon remasterisé avec Gemini ! \n\nPour information : Les Noirs jouent de 24 à 1 (sens antihoraire). \nLes Blancs jouent de 1 à 24 (sens horaire). \nLes pions placés individuellement sur une pointe peuvent être capturés et atterrir sur la barre. \nLes pions de la barre doivent d'abord être replacés sur le plateau. \nPour ce faire, cliquez simplement sur une case disponible (dans le camp adverse) en fonction du résultat du dé. \nSi tous les pions d'une même couleur sont dans le camp adverse (dernier quart),\n le pion peut être déplacé hors du plateau (vers l'arrivée) en double-cliquant. \nSi aucun mouvement n'est possible, appuyez sur le bouton « Passer son tour». \nAmusez-vous bien !!",
+    "closerules": "Fermer",
+    "Open_Rules": "Afficher les instructions",
+    "Players_turn": "votre tour: ",
+    "roll": "Lancer les dés",
+    "passif_blocked": "Passer son tour (lorsqu'on est bloqué)",
+    "game over": "Jeu terminé!",
+    "restartsame": "Encore une fois avec les mêmes joueurs",
+    "restartnew": "Enregistrez de nouveaux joueurs",
+    "showhideHighscore": "🏆 Afficher/masquer le meilleur score",
+    "Halloffame": "🏆 Temple de la renommée",
+    "btn_start": "Start"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "current_lang": "en",
+
+  "elements": {
+    "read_page": "Read the entire page",
+    "home": "Home page",
+    "open_menu": "Open/close menu",
+    "homepage_navigation": "...............................Page navigation.....................",
+    "Buttonfield": "Button panel",
+    "Services": "Services",
+    "Contact": "contact",
+    "Game_start": "Game start",
+    "Game_end": "End of game",
+    "Imprint": "imprint",
+    "Main_Heading": "Main heading",
+    "Homepage_frontend": "Homepage frontend",
+    "Content_of_Homepage": "Content of the page",
+    "Buttonfield_for_ever": "Button panel forever",
+    "Yes_I_am": "I am it",
+    "Please_Select": "-- Please select --",
+    "here_i_am": "here I am",
+    "explain_hash": "Use the blue button to generate a hash in the console using the selection and the text field",
+    "Enter_Name": " Please enter your name ",
+    "Show_hide_list": "Show/hide list",
+    "Show_hide_listbox": "Show/hide listbox",
+    "First_point": "First point",
+    "Second_point": "Second point",
+    "Service1": "Service 1",
+    "Service2": "Service 2",
+    "main_header_Contact": "contact",
+    "Input_text_Contact": "Please enter your message here*:",
+    "text_placeholder": "Please enter your text here...",
+    "Name_Contact": "Name",
+    "Email": "Email",
+    "Submit": "submit",
+    "main_header_Imprint": "Imprint",
+    "Related_header": "Related",
+    "header4": "Thank you very much for visiting our website. \n We hope you enjoyed it and wish you a pleasant day. \n Goodbye.",
+    "main_footer": "© 2026 Your practice page. All rights reserved.",
+    "imprint_footer": "imprint"
+  },
+  "grades": {
+    "Sehr_gut": "very good",
+    "Gut": "good",
+    "Befriedigend": "satisfactory",
+    "Ausreichend": "sufficient",
+    "Mangelhaft": "poor",
+    "Ungenügend": "insufficient",
+    "out_of_order": "out of order"
+  },
+  "imprint": {
+    "history_message": "This (does not) generates  a multi-line text using Javascript, which may provide important information about the location or CEO.."
+  }
+}

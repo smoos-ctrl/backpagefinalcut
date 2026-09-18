@@ -1,0 +1,23 @@
+{
+  "name": "attachments-(1)",
+  "version": "1.0.0",
+  "description": "",
+  "main": "i18nmanager.js",
+  "scripts": {
+    "build": "esbuild script35.js --bundle --outfile=backgammon/bundle.js --loader:.json=json --loader:.css=css",
+    "format": "prettier --write \"**/*.{js,json,css,html}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

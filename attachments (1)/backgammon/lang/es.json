@@ -1,0 +1,47 @@
+{
+  "current_lang": "es",
+  "alerts": {
+    "inputname_message": "¡Por favor, introduce los nombres de ambos jugadores!",
+    "allstonesinside1_message": "¡Primero tienes que llevar TODAS tus fichas a tu zona de casa!",
+    "stoneout_message": "¡Se ha jugado una piedra de color {{farbe}}!",
+    "winnergame_message": "🏆 ¡Felicidades!  {{sieger}} (Blancas) ha ganado la partida.",
+    "winnergame2_message": "🏆 ¡Felicidades!  {{sieger}} (Negras) ha ganado la partida.",
+    "wrongvalueout_message": "No tienes un dado adecuado para sacar una ficha de la casilla {{vonId}} (benötigt: {{benoetigteAugen}}).",
+    "changeplayer_message": "¡Cambio de jugador! Es el turno de {{playerName}}",
+
+    "startwinname_message": "¡{{playerName}} gana la tirada inicial y empieza (Color: Blanco)!",
+    "samedice_message": "¡Empate! Por favor, vuelve a lanzar.",
+    "makemove_message": "¡Debes hacer tus movimientos primero!",
+    "blockedpoint_message": "¡El oponente bloquea este punto!",
+    "wrongvalueingame_message": "¡Movimiento no válido! No hay ninguna tirada de dado que corresponda a estas casillas.",
+    "kickedatbar_message": "💥 ¡Patada! ¡La piedra {{farbe}} golpeó la barra!",
+
+    "roll_dice_btn": "Lanzar los dados",
+    "rolldice1_message": "¡Por favor, lanza los dados primero!",
+    "notyourstone_message": "¡Esa no es tu piedra!",
+    "wrongdirection_message": "¡En la dirección equivocada! Tienes que avanzar.",
+    "blocked_message": "¡Esta casilla de entrada está bloqueada por el oponente!",
+    "kickedoutagain_message": "💥 ¡Expulsado justo al principio! ¡La ficha de color {{farbe}} tiene que ir en la barra!",
+    "backingame_message": "¡Stone pasó con éxito de la barra a la junta directiva  {{feld}}!",
+    "noentry_message": "¡Movimiento no válido! No puedes entrar en la casilla {{feld}} con tus dados [{{zuege}}] (tirada necesaria: {{distanz}})."
+  },
+  "elements": {
+    "header2gamestart": "Registro de jugadores",
+    "namePlayer1": " Nombre (Jugador 1)",
+    "namePlayer2": " Nombre (Jugador 2)",
+    "Start_Playing": "iniciar juego",
+    "header2rules": "reglas de backgammon",
+    "rulesbackgammon": "Aquí están las reglas... \nBienvenido al Backgammon remasterizado con Gemini \n\nPara su información: Las negras juegan del 24 al 1 (en sentido antihorario) \nLas blancas juegan del 1 al 24 (en sentido horario) \nLas fichas que están individualmente en una punta \npueden ser capturadas y luego caer en la barra. \nLas fichas de la barra deben ser primero devueltas al tablero. \nPara hacer esto, simplemente haga clic en un espacio posible (en el tablero de inicio del oponente) según la tirada de dados. \nSi todas las fichas de un color están en el tablero de inicio (último cuarto), \nla ficha puede ser movida del tablero (a la meta) haciendo doble clic. \nSi no es posible ningún movimiento, por favor presione el botón 'Pasar un movimiento'. \n ¡Diviértete y disfruta jugando!!",
+    "closerules": "Cerca",
+    "Open_Rules": "Mostrar instrucciones",
+    "Players_turn": "tu turno: ",
+    "roll": "tirar dados",
+    "passif_blocked": "Pasar un movimiento (cuando está bloqueado)",
+    "game over": "¡Juego terminado!",
+    "restartsame": "De nuevo con los mismos jugadores",
+    "restartnew": "Registrar nuevos jugadores",
+    "showhideHighscore": "🏆 Mostrar/ocultar puntuación más alta",
+    "Halloffame": "🏆 Salón de la Fama",
+    "btn_start": "Start"
+  }
+}

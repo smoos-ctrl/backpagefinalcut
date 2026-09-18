@@ -1,0 +1,562 @@
+/* Erzeugt die Box, die Board und Steuerung nebeneinander hält */
+.game-container {
+  display: flex;
+  flex-direction: row; /* Elemente nebeneinander */
+  align-items: center; /* Vertikal mittig ausrichten */
+  justify-content: center; /* Horizontal mittig ausrichten */
+  gap: 40px; /* Abstand zwischen Board und Würfeln */
+  width: 100%;
+  max-width: 1200px; /* Maximale Breite auf großen Monitoren */
+  padding: 20px;
+  box-sizing: border-box;
+}
+/* --- STEUERUNG DER SICHTBARKEIT (SPA) --- */
+.spiel-phase {
+  display: none; /* Standardmäßig ausblenden vor der Anmeldung */
+}
+/* Neuer Container für die rechte Seite (Würfel + Text) */
+.control-panel {
+  display: flex;
+  flex-direction: column; /* Würfel oben, Info-Text darunter */
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0; /* Verhindert, dass die Würfel gestaucht werden */
+}
+/* Bereich für die Würfel zentrieren */
+.dice-area {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+/* Einfaches Styling für die Spieler-Turn-Anzeige */
+.turn-display {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+/* REPRODUZIERBARKEIT FÜR SMARTPHONES: 
+   Wenn der Bildschirm schmaler als 1050px wird, bricht das Layout sauber untereinander um */
+@media (max-width: 1050px) {
+  .game-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* Der Würfel-Button */
+#btn-roll {
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: background 0.2s;
+}
+#btn-roll:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+/* Die Würfel-Augen/Boxen */
+#dice-result {
+  display: flex;
+  gap: 15px;
+}
+.wuerfel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: white;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.2),
+    inset 0 0 5px rgba(0, 0, 0, 0.1);
+  animation: popIn 0.2s ease-out;
+}
+/* Kleiner Animationseffekt beim Erscheinen der Würfel */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* 6. Das native Dialog-Fenster (Anleitung) stylen */
+#rules-modal {
+  position: flex;
+  border: none;
+  border-radius: 12px;
+  padding: 25px;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+}
+#rules-modal::backdrop {
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Hintergrund abdunkeln bei offener Anleitung */
+}
+/* 1. Die Hauptseite mit dem animierten Hintergrund */
+#backgammon {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Animierter Farbverlauf */
+  background: linear-gradient(
+    45deg,
+    #ee7722,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab
+  );
+  background-size: 400% 400%;
+  animation: gradientMovement 15s ease infinite;
+}
+/* 2. Das Spielfeld im edlen Glas-Look (Glassmorphismus) */
+.backgammon-board {
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  margin-top: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  /* Repariertes Grid-Layout: Obere und untere Reihe sauber getrennt */
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  position: relative;
+}
+/* 3. Die Zacken-Reihen (Top und Bottom) */
+.top-row,
+.bottom-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* 4. Einzelne Zacken als Klick-Zonen */
+.point {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+/* Das sichtbare Dreieck wandert in den Hintergrund */
+.point::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 90%;
+  z-index: 1; /* Hinter die Steine legen */
+}
+/* Obere Zacken zeigen nach unten und kleben am oberen Rand */
+.top-row .point {
+  justify-content: flex-start;
+  padding-top: 5px;
+}
+.top-row .point::before {
+  /* Dieses Polygon zeichnet ein perfektes Dreieck: Oben links, oben rechts, unten mitte */
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: rgba(255, 255, 255, 0.35); /* Helle Zacken */
+}
+.top-row .point:nth-child(even)::before {
+  border-top-color: rgba(0, 0, 0, 0.25);
+}
+/* Untere Zacken zeigen nach oben und kleben am unteren Rand */
+.bottom-row .point {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column-reverse; /* Dreht die Stapelrichtung der Steine um! */
+}
+.bottom-row .point::before {
+  top: auto;
+  bottom: 0;
+  /* Dieses Polygon zeichnet ein Dreieck, das nach oben zeigt: Unten links, oben mitte, unten rechts */
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  background: rgba(0, 0, 0, 0.25); /* Dunkle Zacken */
+}
+.bottom-row .point:nth-child(odd)::before {
+  border-bottom-color: rgba(0, 0, 0, 0.35);
+}
+/* Zahlen für die obere Reihe */
+.top-row .point::after {
+  content: attr(data-point);
+  position: absolute;
+  top: 5px; /* Platziert die Zahl knapp über der Zacke */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 2;
+}
+/* Zahlen für die untere Reihe */
+.bottom-row .point::after {
+  content: attr(data-point);
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 2;
+}
+.point:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+/* 5. Die Bar (Mittellinie) */
+.bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Über den Zacken liegend */
+}
+/* --- LAYOUT FÜR DIE INNEREN BAR-ZONEN ERGÄNZEN --- */
+.bar {
+  /* Dein bestehendes Layout bleibt, wir fügen Flexbox für die Zonen hinzu: */
+  display: flex;
+  flex-direction: column; /* Teilt die Bar in eine obere und untere Hälfte */
+}
+
+/* Obere Hälfte für die geschlagenen weißen Steine */
+#Bar-Weiß-Zone {
+  width: 100%;
+  height: 50%; /* Nutzt die obere Hälfte der Bar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Stapelt geschlagene Steine von oben nach unten */
+  padding-top: 10px;
+  box-sizing: border-box;
+}
+
+/* Untere Hälfte für die geschlagenen schwarzen Steine */
+#Bar-Schwarz-Zone {
+  width: 100%;
+  height: 50%; /* Nutzt die untere Hälfte der Bar */
+  display: flex;
+  flex-direction: column-reverse; /* Stapelt geschlagene Steine von unten nach oben */
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* Damit die Steine auf der Bar nicht verzerrt werden */
+.bar .checker {
+  margin: 2px 0; /* Leichtes Padding zwischen den Steinen auf der Bar */
+  transform: scale(
+    0.9
+  ); /* Macht Steine auf der Bar optional minimal kleiner, damit sie gut passen */
+}
+/* 6. Das Aussehen der runden Spielfiguren */
+.checker {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin: -3px 0; /* Erzeugt einen sauberen Stapel-Look */
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.3),
+    inset 0 2px 2px rgba(255, 255, 255, 0.4);
+  z-index: 5; /* Unbedingt VOR dem Dreieck! */
+  position: relative;
+  transition: transform 0.1s;
+}
+/* Farbe: Weißer Spieler (Creme) */
+.checker.Weiß {
+  background: #f7f5f0;
+  border: 1px solid #d1cdc4;
+}
+/* Farbe: Schwarzer Spieler (Anthrazit) */
+.checker.Schwarz {
+  background: #2b2b2b;
+  border: 1px solid #141414;
+}
+/* Wenn man mit der Maus über eine Zacke fährt */
+
+@keyframes gradientMovement {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Der ausgewählte Stein glüht blau/neon */
+.checker.selected {
+  transform: scale(1.1); /* Wird minimal größer */
+  box-shadow:
+    0 0 15px #23a6d5,
+    0 0 5px #23a6d5,
+    inset 0 2px 2px rgba(255, 255, 255, 0.6);
+  border-color: #23a6d5;
+  z-index: 10; /* Liegt über allen anderen Steinen */
+}
+/* Zwingt den Hauptcontainer, das edle Farb-Layout anzuzeigen */
+#backgammon.seite.aktiv {
+  display: block !important;
+  background: linear-gradient(
+    45deg,
+    #ee7722,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab
+  ) ;
+  background-size: 400% 400% !important;
+  min-height: 100vh !important;
+  padding: 20px !important;
+  animation: gradientMovement 15s ease infinite;
+}
+
+/* Macht die nackten Würfelzahlen sofort zu echten, plastischen Würfeln */
+.wuerfel {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: white !important;
+  color: #333 !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+  border: 2px solid #333 !important;
+  margin: 5px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+/* Zwingt den Hintergrund des Spielbretts, aufzuleuchten */
+/* --- 1. DAS HÄUFIGE LOCH (DER CONTAINER) --- */
+/* --- 1. DER HAUPTCONTAINER (DAS LOCH) --- */
+#backgammon.seite.aktiv {
+  display: block !important;
+  background: linear-gradient(
+    45deg,
+    #ee7722,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab
+  ) ;
+  background-size: 400% 400% !important;
+  min-height: 100vh !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+  animation: gradientMovement 15s ease infinite;
+}
+
+/* --- 2. DIE PHASEN-STEUERUNG (ABSTURZSICHER) --- */
+/* Standardmäßig ist im Spiel ALLES unsichtbar... */
+#spielstart,
+#spielbrett,
+#spielende {
+  display: none !important;
+}
+
+/* ...AUßER das JavaScript fügt die Klasse ".aktiv" hinzu! */
+#backgammon #spielstart.aktiv {
+  display: block !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  background-color: #0d1117 !important;
+  max-width: 400px !important;
+  margin: 40px auto !important;
+  padding: 30px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+}
+
+#backgammon #spielbrett.aktiv {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+#backgammon #spielende.aktiv {
+  display: block !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  background-color: #fafafa !important;
+  color: #333 !important;
+  max-width: 500px !important;
+  margin: 40px auto !important;
+  padding: 30px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* --- 3. ELEMENT-STYLES --- */
+#spielstart input {
+  display: block !important;
+  width: 250px !important;
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  padding: 10px !important;
+  margin: 12px auto !important;
+  border-radius: 6px !important;
+  border: none !important;
+}
+
+#spielstart label {
+  display: block !important;
+  color: #ffffff !important;
+  margin: 10px auto !important;
+  width: 250px !important;
+  font-family: sans-serif !important;
+}
+
+#spielstart button {
+  display: block !important;
+  width: 250px !important;
+  background-color: #007bff !important;
+  color: white !important;
+  padding: 12px !important;
+  margin: 20px auto !important;
+  border-radius: 6px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  border: none !important;
+}
+
+.wuerfel {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: white !important;
+  color: #333 !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+  border: 2px solid #333 !important;
+  margin: 5px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+/* ========================================================
+   MODERNES DESIGN FÜR ALLE IN-GAME BUTTONS
+   ======================================================== */
+#btn-roll, #btn-pass, #open-rules, #close-rules, 
+#btn-restart-same, #btn-restart-new, #btn-toggle-highscore {
+  padding: 12px 28px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  font-family: sans-serif !important;
+  border-radius: 10px !important; /* Wunderschön abgerundete Ecken */
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  
+  /* Glas-Look Hintergrund (Halbtransparent) */
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #060202 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+  
+  cursor: pointer !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  
+  /* Seidiger Übergang für die Hover-Animation */
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Hover-Effekt: Knöpfe leuchten auf und heben sich leicht an */
+#btn-roll:hover, #btn-pass:hover, #open-rules:hover, #close-rules:hover,
+#btn-restart-same:hover, #btn-restart-new:hover, #btn-toggle-highscore:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-2px) !important; /* Schiebt den Button elegant hoch */
+  
+}
+
+/* Klick-Effekt (Active): Gibt haptisches Feedback */
+#btn-roll:active, #btn-pass:active, #open-rules:active, #close-rules:active,
+#btn-restart-same:active, #btn-restart-new:active, #btn-toggle-highscore:active {
+  transform: translateY(1px) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Spezial-Färbung für den "Passen"-Knopf, damit er sich abhebt (Dezentes Rot-Glimmen) */
+#btn-pass {
+  background: rgba(231, 76, 60, 0.2) !important;
+  border-color: rgba(231, 76, 60, 0.3) !important;
+}
+#btn-pass:hover {
+  background: rgba(231, 76, 60, 0.35) !important;
+  border-color: rgba(231, 76, 60, 0.5) !important;
+}
+#rules-modal p, .rules-text {
+  white-space: pre-line; /* Zwingt den Browser, \n als Umbruch anzuzeigen! */
+}
+/* Aktiviert die flüssige Bewegung auf dem Hauptcontainer */
+#backgammon.seite.aktiv {
+  animation: gradientMovement 15s ease infinite !important;
+}
+
+/* Behebt die weiße Schrift auf hellem Grund bei Spielende (Bento-Grid) */
+#backgammon #spielende.aktiv {
+  color: #222222 !important; /* Macht Standardtexte dunkel */
+}
+
+#backgammon #spielende.aktiv h2, 
+#backgammon #spielende.aktiv div, 
+#backgammon #spielende.aktiv p,
+#backgammon #spielende.aktiv h4 {
+  color: #0b0303 !important; /* Zwingt alle Überschriften und Texte auf lesbares Anthrazit */
+}
+
+/* Macht die Highscore-Liste (Hall of Fame) perfekt lesbar */
+#highscore-liste {
+  color: #333333 !important;
+}
+
+#highscore-liste li {
+  color: #333333 !important;
+  text-shadow: none !important; /* Entfernt den hellen Schatten, der auf weiß stört */
+}

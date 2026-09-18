@@ -1,0 +1,48 @@
+{
+  "current_lang": "en",
+
+  "alerts": {
+    "startwinname_message": "{{playerName}} wins the opening roll and starts (Color: White)!",
+    "samedice_message": "Tie! Please roll again.",
+    "makemove_message": "You must make your moves first!",
+    "changeplayer_message": "Player change! It is {{playerName}}'s turn.",
+    "blockedpoint_message": "This point is blocked by the opponent!",
+    "wrongvalueingame_message": "Invalid move! No matching dice value for these spaces.",
+    "kickedatbar_message": "💥 Kicked! The {{farbe}} checker was sent to the bar!",
+
+    "roll_dice_btn": "Roll Dice",
+    "rolldice1_message": "Please roll the dice first!",
+    "notyourstone_message": "That is not your checker!",
+    "wrongdirection_message": "Wrong direction! You must move forward.",
+    "blocked_message": "This entry point is blocked by the opponent!",
+    "kickedoutagain_message": "💥 Kicked right at entry! The {{farbe}} checker goes to the bar!",
+    "backingame_message": "Checker successfully entered from the bar into space {{feld}}!",
+    "noentry_message": "Invalid entry! You cannot enter square {{feld}} with your dice [{{zuege}}] (required roll: {{distanz}}).",
+
+    "inputname_message": "Please enter the names of both players!",
+    "allstonesinside1_message": "You first have to get ALL your checkers into your home area!",
+    "stoneout_message": "A {{farbe}} Stone has been played off the board!",
+    "winnergame_message": "🏆 Congratulations! {{sieger}} (White) has won the game!",
+    "winnergame2_message": "🏆 Congratualtions! {{sieger}}  (Black) has won the game!",
+    "wrongvalueout_message": "You don't have a suitable die to move a CHecker out of space {{vonId}} (benötigt: {{benoetigteAugen}})."
+  },
+  "elements": {
+    "header2gamestart": "Player registration",
+    "namePlayer1": " Name (Player 1)",
+    "namePlayer2": " Name (Player 2)",
+    "Start_Playing": "Start game",
+    "header2rules": "Backgammon rules",
+    "rulesbackgammon": "Here are the rules... \nWelcome to Backgammon remastered with gemini \n\nFor your information: Black plays from 24 to 1 (counter-clockwise) \nWhite plays from 1 to 24 (clockwise) \nChecks that are individually on a spike \ncan be captured and then land on the bar. \nChecks from the bar must first be moved back onto the board. \nTo do this, simply click on a possible space (in the opponent's home board) according to the dice roll. \nIf all checkers of one color are in the home board (last quarter), \nthe checker can be moved from the board (to the finish) by double-clicking.\nIf no move is possible, please press the 'pass move' button. \n Have fun and enjoy playing!!",
+    "closerules": "close",
+    "Open_Rules": "Show instructions",
+    "Players_turn": "Player's turn: ",
+    "roll": "Dice rolling",
+    "passif_blocked": "Passing a move (when blocked) ",
+    "game over": "Game over!",
+    "restartsame": "Again with the same players",
+    "restartnew": "Register new players",
+    "showhideHighscore": "🏆 Show/hide high score",
+    "Halloffame": "🏆 Hall of Fame",
+    "btn_start": "Start"
+  }
+}

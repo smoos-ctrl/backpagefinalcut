@@ -1,0 +1,54 @@
+{
+  "current_lang": "es",
+
+  "elements": {
+    "read_page": "Leer la página completa",
+    "home": "pagina de inicio",
+    "open_menu": "Abrir/cerrar menú",
+    "homepage_navigation": "...............Navegación de página................",
+    "Buttonfield": "Panel de botones",
+    "Services": "Servicios",
+    "Contact": "contacto",
+    "Game_start": "inicio del juego",
+    "Game_end": "Fin del juego",
+    "Imprint": "imprimir",
+    "Main_Heading": "título principal",
+    "Homepage_frontend": "Interfaz de la página de inicio",
+    "Content_of_Homepage": "Contenido de la pagina",
+    "Buttonfield_for_ever": "Panel de botones para siempre",
+    "Yes_I_am": "yo lo soy",
+    "Please_Select": "-- Por favor seleccione --",
+    "here_i_am": "Aquí estoy",
+    "explain_hash": "Utilice el botón azul para generar un hash en la consola utilizando la selección y el campo de texto",
+    "Enter_Name": " Por favor ingresa tu nombre ",
+    "Show_hide_list": "Mostrar/ocultar lista",
+    "Show_hide_listbox": "Mostrar/ocultar cuadro de lista",
+    "First_point": "primer punto",
+    "Second_point": "segundo punto",
+    "Service1": "Servicio 1",
+    "Service2": "Servicio 2",
+    "main_header_Contact": "contacto",
+    "Input_text_Contact": "Por favor, escriba su mensaje aquí*:",
+    "text_placeholder": "Por favor, introduzca su texto aquí...",
+    "Name_Contact": "nombre",
+    "Email": "Correo electrónico",
+    "Submit": "entregar",
+    "main_header_Imprint": "imprimir",
+    "Related_header": "Relacionado",
+    "header4": "Muchas gracias por visitar nuestro sitio web. \n Esperamos que lo hayan disfrutado y les deseamos un buen día. \n Adiós.",
+    "main_footer": "© 2026 Tu página de práctica. Reservados todos los derechos.",
+    "imprint_footer": "imprimir"
+  },
+  "grades": {
+    "Sehr_gut": "muy bien",
+    "Gut": "bien",
+    "Befriedigend": "Satisfactorio",
+    "Ausreichend": "Suficiente",
+    "Mangelhaft": "Deficiente",
+    "Ungenügend": "Insuficiente",
+    "out_of_order": "fuera de servicio"
+  },
+  "imprint": {
+    "history_message": "Esto (no) genera un texto de varias líneas mediante Javascript, que puede proporcionar información importante sobre la ubicación o el director ejecutivo."
+  }
+}

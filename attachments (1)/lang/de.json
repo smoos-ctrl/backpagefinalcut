@@ -1,0 +1,52 @@
+{
+  "elements": {
+    "read_page": "Ganze Seite vorlesen",
+    "home": "Startseite",
+    "open_menu": "Menue oeffnen/schliessen",
+    "homepage_navigation": "...............................................Seitennavigation....................................................",
+    "Buttonfield": "Knopffeld",
+    "Services": "Leistungen",
+    "Contact": "Kontakt",
+    "Game_start": "Spielstart",
+    "Game_end": "Spielende",
+    "Imprint": "Impressum",
+    "Main_Heading": "Hauptueberschrift",
+    "Homepage_frontend": "Homepage-Frontend",
+    "Content_of_Homepage": "Inhalt der Seite",
+    "Buttonfield_for_ever": "Knopffeld für immer",
+    "Yes_I_am": "Ich bin`s",
+    "Please_Select": "-- Bitte wählen --",
+    "here_i_am": "hier bin ich",
+    "explain_hash": "Nutzen Sie den blauen Knopf um mit der Auswahl und dem Textfeld ein Hash in der Console zu erzeugen",
+    "Enter_Name": " Bitte Geben Sie Ihren Namen ein ",
+    "Show_hide_list": "Liste zeigen/verstecken",
+    "Show_hide_listbox": "Listbox zeigen/verstecken",
+    "First_point": "Erster Punkt",
+    "Second_point": "Zweiter Punkt",
+    "Service1": "Dienst 1",
+    "Service2": "Dienst 2",
+    "main_header_Contact": "Kontakt",
+    "Input_text_Contact": "Bitte geben Sie hier Ihre Nachricht ein*:",
+    "text_placeholder": "Bitte geben Sie hier Ihren Text ein...",
+    "Name_Contact": "Name",
+    "Email": "E-mail",
+    "Submit": "einreichen",
+    "main_header_Imprint": "Impressum",
+    "Related_header": "Verwandt",
+    "header4": "Wir danken recht herzlich für Ihren Besuch auf unserer Seite. \n Wir hoffen es hat Ihnen gefallen und wünschen noch einen angenehmen Tag. \n \n Auf Wiedersehen.",
+    "main_footer": "© 2026 Deine Übungsseite. Alle Rechte vorbehalten.",
+    "imprint_footer": "impressum"
+  },
+  "grades": {
+    "Sehr_gut": "Sehr gut",
+    "Gut": "Gut",
+    "Befriedigend": "Befriedigend",
+    "Ausreichend": "Ausreichend",
+    "Mangelhaft": "Mangelhaft",
+    "Ungenügend": "Ungenügend",
+    "out_of_order": "Außer Betrieb"
+  },
+  "imprint": {
+    "history_message": "Hier entsteht (k)ein mehrzeiliger Text mit Javascript,\nwelcher eventuell wichtige Hinweise über den Standort\noder CEO liefert."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "current_lang": "fr",
+
+  "elements": {
+    "read_page": "Lire la page entière",
+    "home": "Page d'accueil",
+    "open_menu": "Ouvrir/fermer le menu",
+    "homepage_navigation": ".................Navigation de la page.....................",
+    "Buttonfield": "Panneau de boutons",
+    "Services": "Services",
+    "Contact": "contact",
+    "Game_start": "Début du jeu",
+    "Game_end": "Fin du jeu",
+    "Imprint": "imprimer",
+    "Main_Heading": "Rubrique principale",
+    "Homepage_frontend": "Interface de la page d'accueil",
+    "Content_of_Homepage": "Contenu de la page",
+    "Buttonfield_for_ever": "Panneau de boutons pour toujours",
+    "Yes_I_am": "je le suis",
+    "Please_Select": "-- Veuillez sélectionner --",
+    "here_i_am": "me voici",
+    "explain_hash": "Utilisez le bouton bleu pour générer un hachage dans la console à l'aide de la sélection et du champ de texte",
+    "Enter_Name": " Veuillez entrer votre nom ",
+    "Show_hide_list": "Afficher/masquer la liste",
+    "Show_hide_listbox": "Afficher/masquer la liste déroulante",
+    "First_point": "premier point",
+    "Second_point": "deuxième point",
+    "Service1": "Prestation 1",
+    "Service2": "Prestation 2",
+    "main_header_Contact": "contact",
+    "Input_text_Contact": "Veuillez saisir votre message ici*:",
+    "text_placeholder": "Veuillez saisir votre texte ici...",
+    "Name_Contact": "Nom",
+    "Email": "E-mail",
+    "Submit": "soumettre",
+    "main_header_Imprint": "Imprimer",
+    "Related_header": "En rapport",
+    "header4": "Merci beaucoup d'avoir visité notre site web. \n Nous espérons que vous avez apprécié et vous souhaitons une agréable journée. \n Au revoir.",
+    "main_footer": "© 2026 Votre page de pratique. Tous droits réservés.",
+    "imprint_footer": "imprimer"
+  },
+  "grades": {
+    "Sehr_gut": "très bien",
+    "Gut": "bien",
+    "Befriedigend": "Satisfaisant",
+    "Ausreichend": "Suffisant",
+    "Mangelhaft": "Déficient",
+    "Ungenügend": "Insuffisant",
+    "out_of_order": "En panne"
+  },
+  "imprint": {
+    "history_message": "Cela (ne) génère (pas) un texte multiligne utilisant Javascript, qui peut fournir des informations importantes sur le lieu ou le PDG."
+  }
+}

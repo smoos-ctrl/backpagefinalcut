@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Seitentitel - Website</title>
+    <meta name="description" content="Kurze Beschreibung der Seite." />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="backgammon/backgammoncss.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-actions">
+        <button
+          id="btn-vorlesen"
+          ganzeSeiteVorlesen()
+          aria-label="ganze Seite vorlesen"
+          data-i18n="elements.read_page"
+        >
+          Ganze Seite vorlesen
+        </button>
+        <button
+          class="btn-font"
+          data-size="increase"
+          aria-label="Schrift vergrößern"
+          data-i18n="font_size_up"
+        >
+          A+
+        </button>
+        <button
+          class="btn-font"
+          data-size="decrease"
+          aria-label="Schrift verkleinern"
+          data-i18n="font_size_down"
+        >
+          A-
+        </button>
+      </div>
+      <div class="logo">
+        <li><a href="home" data-i18n="elements.home">Startseite</a></li>
+      </div>
+      <button id="menuButtonMain" data-i18n="elements.open_menu">
+        Menue oeffnen/schliessen
+        <span></span>
+      </button>
+      <nav aria-label="Hauptnavigation" class="main-nav">
+        <span data-i18n="elements.homepage_navigation">
+          ...............................................Seitennavigation....................................................</span
+        >
+        <ul>
+          <li>
+            <a href="#buttonfield" data-i18n="elements.Buttonfield"
+              >Buttonfield</a
+            >
+          </li>
+          <li>
+            <a href="#leistungen" data-i18n="elements.Services">Leistungen</a>
+          </li>
+          <li><a href="#kontakt" data-i18n="elements.Contact">Kontakt</a></li>
+          <li>
+            <a
+              href="backgammon/backgammonhtml.html#spielstart"
+              data-i18n="elements.Game_start"
+              >Spielstart</a
+            >
+          </li>
+          <!--<li><a href="backgammon">Backgammon</a></li>-->
+          <li>
+            <a
+              href="backgammon/backgammonhtml.html#spielende"
+              data-i18n="elements.Game_end"
+              >Spielende</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="custom-dropdown">
+        <!-- Der Hauptbutton, der die aktive Sprache anzeigt-->
+        <button
+          class="dropdown-btn"
+          id="current-lang-btn"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+        >
+          de
+        </button>
+        <!-- Die versteckte Sprachenliste -->
+        <ul class="dropdown-list" id="lang-list" role="listbox">
+          <li data-lang="de" role="option">Deutsch</li>
+          <li data-lang="en" role="option">English</li>
+          <li data-lang="fr" role="option">Français</li>
+          <li data-lang="es" role="option">Español</li>
+        </ul>
+      </div>
+      <form action="" method="get" id="listboxmain">
+        <select name="ziel">
+          <option value="" data-i18n="elements.Please_Select">
+            -- Bitte wählen --
+          </option>
+          <option value="#buttonfield" data-i18n="elements.Buttonfield">
+            -- Buttonfield --
+          </option>
+          <option value="#leistungen" data-i18n="elements.Services">
+            -- Leistungen --
+          </option>
+          <option
+            value="backgammon/backgammonhtml.html#spielstart"
+            data-i18n="elements.Game_start"
+          >
+            -- Spiel Starten --
+          </option>
+          <option value="#Kontakt" data-i18n="elements.Contact">
+            -- Kontakt --
+          </option>
+          <option value="#impressum" data-i18n="elements.Imprint">
+            -- Impressum --
+          </option>
+        </select>
+      </form>
+    </header>
+    <main class="layout-container">
+      <!-- SEITE 1: HOME -->
+      <div id="home" class="seite aktiv">
+        <h1 data-i18n="elements.Main_Heading">Hauptueberschrift</h1>
+        <figure>
+          <img
+            src="bildki.webp"
+            alt="Ich teilte der KI mit sie solle mir ein Bild für meine erste Homepage machen , nur zu Versuchszwecken. das Kam dabei raus :D "
+            data-i18n="alt:photo.description_alt"
+            width="1200"
+            height="800"
+            loading="lazy"
+            style="max-width: 100%; height: auto"
+          />
+          <figcaption data-i18n="elements.Homepage_frontend">
+            Homepage frontend
+          </figcaption>
+        </figure>
+        <p data-i18n="elements.Content_of_Homepage">Inhalt der Seite</p>
+      </div>
+      <!-- FÜGE DIESEN NEUEN CONTAINER IN DIE HAUPT-HTML EIN -->
+      <div id="backgammon" class="seite">
+        <!-- Hier wird das Spiel per Fetch reingeladen, die Startseite bleibt dadurch unberührt! -->
+      </div>
+      <!-- SEITE 2: BUTTONFIELD -->
+      <div id="buttonfield" class="seite">
+        <h4
+          style="text-align: center; margin-bottom: 20px"
+          data-i18n="elements.Buttonfield_for_ever"
+        >
+          Buttonfield for ever
+        </h4>
+        <div class="layout-container-buttonfield">
+          <h1
+            style="text-align: center; margin-bottom: 20px"
+            data-i18n="elements.Yes_I_am"
+          >
+            Iiiiiihhh bims
+          </h1>
+          <div class="links">
+            <label data-i18n="elements.explain_hash"
+              >Nutzen Sie den blauen Knopf um mit der Auswahl und dem Textfelb
+              ein Hash in der Console zu erzeugen</label
+            >
+            <input
+              type="text"
+              id="eingabename"
+              placeholder="Text eingeben..."
+              data-i18n="placeholder:elements.Enter_Name"
+            />
+            <label data-i18n="elements.Enter_Name">
+              Bitte Geben Sie Ihren Namen ein
+            </label>
+            <button
+              id="ein-button"
+              data-target="nav-liste"
+              data-i18n="elements.open_menu"
+            >
+              Menue oeffnen/schliessen
+            </button>
+            <div class="buttonfield-navigation"></div>
+            <div id="nav-liste" class="mein-menue" style="display: none">
+              <ul>
+                <li>
+                  <span class="menue-text" data-i18n="elements.Please_Select"
+                    >-- Bitte wählen --</span
+                  >
+                </li>
+                <!-- Diese 'data-page'-Attribute steuern magisch deine Seitenumschaltung -->
+                <li>
+                  <a
+                    class="menue-link"
+                    data-page="#home"
+                    data-i18n="elements.Home"
+                    >-- Startseite --</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="menue-link"
+                    data-page="#leistungen"
+                    data-i18n="elements.Services"
+                    >-- Leistungen --</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="menue-link"
+                    data-page="#kontakt"
+                    data-i18n="elements.Contact"
+                    >-- Kontakt --</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="menue-link"
+                    data-page="#impressum"
+                    data-i18n="elements.Imprint"
+                    >-- Impressum --</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="rechts">
+            <button
+              id="zweibutton"
+              class="mein-button"
+              data-i18n="elements.here_i_am"
+            >
+              hier bin ich
+            </button>
+            <select id="grade" name="grade" class="versteckte-liste"></select>
+          </div>
+        </div>
+      </div>
+      <!-- SEITE 3: LEISTUNGEN -->
+      <div id="leistungen" class="seite">
+        <h1>Leistungen</h1>
+        <button
+          id="menuButton"
+          data-target="listbox"
+          data-i18n="elements.open_menu"
+        >
+          Menue oeffnen/schliessen
+        </button>
+        <div id="listbox" class="mein-menue" style="display: none">
+          <ul>
+            <li>
+              <span class="menue-text" data-i18n="elementsPlease_Select"
+                >-- Bitte wählen --</span
+              >
+            </li>
+            <li>
+              <a class="menue-link" data-page="#home" data-i18n="elements.Home"
+                >-- Startseite --</a
+              >
+            </li>
+            <li>
+              <a
+                class="menue-link"
+                data-page="#buttonfield"
+                data-i18n="elements.Buttonfield"
+                >-- Buttonfield --</a
+              >
+            </li>
+            <li>
+              <a
+                class="menue-link"
+                data-page="#kontakt"
+                data-i18n="elements.Contact"
+                >-- Kontakt --</a
+              >
+            </li>
+            <li>
+              <a
+                class="menue-link"
+                data-page="#impressum"
+                data-i18n="elements.Imprint"
+                >-- Impressum --</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Die Buttons zum Steuern (hier fängt der funtionierende code an)-->
+        <button data-target="meineListe" data-i18n="elements.Show_hide_list">
+          Liste zeigen/verstecken
+        </button>
+        <button
+          data-target="meineListbox"
+          data-i18n="elements.Show_hide_listbox"
+        >
+          Listbox zeigen/verstecken
+        </button>
+        <br /><br />
+        <!-- Die Elemente, die ein- und ausgeblendet werden sollen -->
+        <ul id="meineListe" class="mein-menue" style="display: none">
+          <li data-i18n="elements.First_point">Erster Punkt</li>
+          <li data-i18n="elements.Second_point">Zweiter Punkt</li>
+        </ul>
+        <!-- SEO-optimiertes HTML -->
+        <nav id="meineListbox" style="display: none">
+          <ul>
+            <li>
+              <a
+                class="menue-link"
+                href="#service1"
+                data-i18n="elements.Service1"
+                >Service 1</a
+              >
+            </li>
+            <li>
+              <a
+                class="menue-link"
+                href="#service2"
+                data-i18n="elements.Service2"
+                >Service 2</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- SEITE 4: KONTAKT -->
+      <div id="kontakt" class="seite">
+        <h1 data-i18n="elements.main_header_Contact">Kontakt</h1>
+        <br />
+        <form id="meinKontaktFormular">
+          <div>
+            <label data-i18n="elements.Input_text_Contact"
+              >Bitte geben Sie hier Ihre Nachricht ein*:</label
+            >
+            <br />
+            <textarea
+              id="kontaktarea"
+              name="kontaktarea"
+              cols="35"
+              rows="5"
+              placeholder="Bitte geben Sie hier Ihren Text ein..."
+              data-i18n="placeholder:elements.text_placeholder"
+              required
+            ></textarea>
+            <br />
+          </div>
+          <div>
+            <label for="name" data-i18n="elements.Name_Contact"
+              >Name <span aria-hidden="true">*</span></label
+            >
+            <input id="name" name="name" autocomplete="off" required />
+          </div>
+          <div>
+            <label for="email" data-i18n="elements.Email">E-Mail*</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <button type="submit" data-i18n="elements.Submit">submit</button>
+        </form>
+      </div>
+      <!-- SEITE 5: IMPRESSUM -->
+      <div id="impressum" class="seite">
+        <h1 data-i18n="elements.main_header_Imprint">Impressum</h1>
+        <aside>
+          <h2 data-i18n="elements.Related_header">Related</h2>
+          <div
+            id="ausgabe"
+            data-i18n="imprint.history_message"
+            style="white-space: pre-line"
+          >
+            \n Hier entsteht (k)ein mehrzeiliger Text mit Javascript welcher
+            eventuell wichtige Hinweise über den Standort oder CEO liefert.
+          </div>
+        </aside>
+        <h4 data-i18n="elements.header4">
+          Wir danken recht herzlich für Ihren Besuch auf unserer Seite. <br />
+          Wir hoffen es hat Ihnen gefallen und wünschen noch einen angenehmen
+          Tag. <br />
+
+          Auf Wiedersehen.
+        </h4>
+      </div>
+    </main>
+    <footer class="main-footer">
+      <p data-i18n="elements.main_footer">
+        &copy; 2026 Deine Übungsseite. Alle Rechte vorbehalten.
+      </p>
+      <div class="footer-links">
+        <ul>
+          <li>
+            <a href="#impressum" data-i18n="elements.imprint_footer"
+              >impressum</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="./backgammon/bundle.js" type="module"></script>
+  </body>
+</html>
