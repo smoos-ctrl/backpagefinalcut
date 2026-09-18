@@ -42,6 +42,7 @@ jobs:
           find _site -maxdepth 3 -type f
 
           test -f _site/index.html
+          test -f _site/style.css
 
       - name: GitHub Pages konfigurieren
         uses: actions/configure-pages@v5
